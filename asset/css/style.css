@@ -1,0 +1,648 @@
+body {
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.hero-section {
+    height: 60vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://remini.ai/images/prismic/low-quality-enhancer-hero-before.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.news-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+
+
+@media (min-width: 1400px) {
+    .container-xxl {
+        max-width: 1750px;
+    }
+}
+
+
+
+
+
+
+.swiper-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.slide-image {
+    width: 75%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.8s ease;
+    transform-origin: center;
+}
+
+.swiper-slide-active .slide-image {
+    transform: scale(1.05);
+}
+
+.swiper-caption {
+    width: 25%;
+    padding: 20px;
+    background: #000000;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.swiper-slide-active .swiper-caption {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.3s;
+}
+
+.swiper-caption h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.swiper-caption h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 2px;
+    background: #fff;
+}
+
+.swiper-caption p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: white;
+    /* background: rgba(0, 0, 0, 0.3); */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+
+.swiper-pagination-bullet {
+    background: white;
+    opacity: 0.5;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px !important;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #007bff;
+}
+
+/* افکت‌های متن */
+.swiper-caption h3 {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.swiper-caption p {
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.swiper-caption a {
+    animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+
+
+
+
+.section-title {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.section-title h2 {
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+}
+
+.section-title .divider {
+    width: 80px;
+    height: 3px;
+    background: var(--secondary-color);
+    margin: 0 auto;
+    position: relative;
+}
+
+/* .section-title .divider:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -5px;
+    width: 100%;
+    height: 13px;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0iI2ZmOTgwMCIgZD0iTTUwIDBDMjIuNCAwIDAgMjIuNCAwIDUwczIyLjQgNTAgNTAgNTAgNTAtMjIuNCA1MC01MFM3Ny42IDAgNTAgMHoiLz48L3N2Zz4=) no-repeat center center;
+    background-size: contain;
+}
+ */
+.team-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: all 0.5s ease;
+    background: white;
+    position: relative;
+    border: none;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.team-img {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+
+.team-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.team-card:hover .team-img img {
+    transform: scale(1.1);
+}
+
+.team-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(63, 81, 181, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.team-card:hover .team-overlay {
+    opacity: 1;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.social-icons li {
+    margin: 0 10px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 50%;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: var(--secondary-color);
+    color: white;
+    transform: rotate(360deg);
+}
+
+.team-info {
+    padding: 25px;
+    text-align: center;
+}
+
+.team-info h4 {
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.team-info p {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.team-info .divider {
+    width: 50px;
+    height: 2px;
+    background: var(--secondary-color);
+    margin: 0 auto 15px;
+}
+
+.team-info .bio {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* افکت‌های Hover.css */
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+}
+
+
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .team-img {
+        height: 250px;
+    }
+
+    .team-info {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .swiper-container {
+        height: auto;
+        /* ارتفاع خودکار بر اساس محتوا */
+    }
+
+    .swiper-slide {
+        flex-direction: column;
+        /* تغییر جهت به عمودی (متن زیر عکس) */
+    }
+
+    .slide-image {
+        width: 100% !important;
+        /* عرض کامل */
+        height: 150px !important;
+        /* ارتفاع ثابت کمتر */
+    }
+
+    .swiper-caption {
+        width: 100% !important;
+        /* عرض کامل */
+        padding: 15px;
+        height: auto;
+        /* ارتفاع خودکار */
+        transform: translateY(20px);
+        /* افکت ورود از پایین */
+    }
+
+    .swiper-slide-active .swiper-caption {
+        transform: translateY(0);
+    }
+
+    /* کاهش سایز فونت‌ها برای موبایل */
+    .swiper-caption h3 {
+        font-size: 20px;
+    }
+
+    .swiper-caption p {
+        font-size: 14px;
+    }
+
+    .swiper-pagination,
+    .swiper-button-prev,
+    .swiper-button-next {
+        display: none;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.banner {
+    position: relative;
+    height: 200px;
+    /* ارتفاع بیشتر */
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-color), #5c6bc0);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* دایره‌های بلور شده */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: float 15s infinite linear;
+}
+
+.bubble:nth-child(1) {
+    width: 120px;
+    height: 120px;
+    top: 20%;
+    left: 10%;
+}
+
+.bubble:nth-child(2) {
+    width: 180px;
+    height: 180px;
+    bottom: 30%;
+    right: 15%;
+}
+
+/* متن بسیار بزرگ */
+.banner-text {
+    position: relative;
+    z-index: 2;
+    font-size: 5rem;
+    /* سایز بسیار بزرگ */
+    font-weight: 900;
+    color: var(--text-color);
+    text-align: center;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    padding: 0 20px;
+    animation: textFade 8s infinite;
+}
+
+/* انیمیشن‌ها */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(360deg);
+    }
+}
+
+@keyframes textFade {
+
+    0%,
+    100% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .banner {
+        height: 150px;
+    }
+
+    .banner-text {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-text {
+        font-size: 2.2rem;
+    }
+}
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 2.2rem;
+}
+
+.section-header p {
+    color: #7f8c8d;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+.companies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 0 20px;
+}
+
+.company-item {
+    width: 180px;
+    height: 180px;
+    background: white;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    padding: 25px;
+}
+
+.company-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+    filter: grayscale(30%);
+}
+
+.company-title {
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 15px;
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+/* افکت‌های هاور برای هر صنعت */
+.tech-company.hvr-grow:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(66, 133, 244, 0.2);
+    border-bottom: 4px solid var(--tech-color);
+}
+
+.industry-company.hvr-grow:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(52, 168, 83, 0.2);
+    border-bottom: 4px solid var(--industry-color);
+}
+
+.finance-company.hvr-grow:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(234, 67, 53, 0.2);
+    border-bottom: 4px solid var(--finance-color);
+}
+
+.energy-company.hvr-grow:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(251, 188, 5, 0.2);
+    border-bottom: 4px solid var(--energy-color);
+}
+
+.health-company.hvr-grow:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(103, 58, 183, 0.2);
+    border-bottom: 4px solid var(--health-color);
+}
+
+.company-item:hover .company-logo {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.company-item:hover .company-title {
+    color: var(--primary-color);
+}
+
+.view-all {
+    background: linear-gradient(135deg, var(--primary-color), #5c6bc0);
+    color: white;
+    cursor: pointer;
+}
+
+.view-all i {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.view-all .company-title {
+    color: white;
+    font-size: 16px;
+}
+
+.view-all.hvr-sweep-to-right:before {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+}
+
+/* ریسپانسیو */
+@media (max-width: 1200px) {
+    .company-item {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 992px) {
+    .company-item {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .company-logo {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .companies-grid {
+        gap: 15px;
+    }
+    
+    .company-item {
+        width: 120px;
+        height: 120px;
+        border-radius: 15px;
+    }
+    
+    .company-logo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .company-item {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .company-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .company-title {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه محصولات</title>
+    <!-- MDB CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.rtl.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../asset/css/base.css">
+
+    <style>
+        .product-card {
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .grid-controls {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .filter-section {
+            position: sticky;
+            top: 20px;
+        }
+
+        @media (max-width: 991.98px) {
+            .filter-section {
+                position: static;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .container-xxl {
+                max-width: 1750px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl ">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary mx-1 mx-lg-0 my-3 mb-2 ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img
+                        src="https://shams-abad.com/uploads/Resources/Images/Portal/Logo/Logo.png" height="50" alt=""></a>
+                <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link active" aria-current="page" href="#">خانه</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">درباره ما</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">استخدامی</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">اخبار</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        <a href="#" class="btn btn-outline-primary ">
+                            <p class="h6">ورود</p>
+                        </a>
+    
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
+            <div class="container-fluid">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="#">خانه</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    <a href="#">فروشگاه</a>
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </nav>
+        <!-- بخش جستجو -->
+        <div class="row mb-4">
+            <div class="col-md-6 offset-md-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="جستجوی محصولات...">
+                    <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- کنترل‌های نمایش محصولات -->
+        <div class="grid-controls text-center mb-4 d-none d-md-block">
+            <span class="me-3">تعداد محصول در هر ردیف:</span>
+            <div class="btn-group">
+                <button class="btn btn-outline-primary change-grid" data-cols="1">1 تایی</button>
+                <button class="btn btn-outline-primary change-grid" data-cols="2">2 تایی</button>
+                <button class="btn btn-outline-primary change-grid" data-cols="3">3 تایی</button>
+                <button class="btn btn-primary change-grid" data-cols="4">4 تایی</button>
+                <button class="btn btn-outline-primary change-grid d-md-none d-xxl-block" data-cols="6">6 تایی</button>
+            </div>
+        </div>
+
+        <!-- لیست محصولات -->
+        <div class="row">
+            <!-- بخش فیلترها در سمت راست -->
+            <div class="col-lg-3 order-lg-2 mb-4">
+                <div class="card filter-section">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">فیلتر محصولات</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">دسته‌بندی</label>
+                            <select class="form-select mb-3">
+                                <option selected>همه دسته‌بندی‌ها</option>
+                                <option>الکترونیکی</option>
+                                <option>پوشاک</option>
+                                <option>لوازم خانگی</option>
+                            </select>
+
+                            <label class="form-label">محدوده قیمت</label>
+                            <select class="form-select mb-3">
+                                <option selected>همه قیمت‌ها</option>
+                                <option>تا 100,000 تومان</option>
+                                <option>100,000 تا 500,000 تومان</option>
+                                <option>بالای 500,000 تومان</option>
+                            </select>
+
+                            <label class="form-label">رتبه‌بندی</label>
+                            <select class="form-select mb-3">
+                                <option selected>همه رتبه‌ها</option>
+                                <option>4 ستاره به بالا</option>
+                                <option>3 ستاره به بالا</option>
+                            </select>
+
+                            <button class="btn btn-primary w-100 mt-2">اعمال فیلترها</button>
+                            <button class="btn btn-outline-secondary w-100 mt-2">پاک کردن فیلترها</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- لیست محصولات در سمت چپ -->
+            <div class="col-lg-9 order-lg-1">
+                <div class="row products-container" id="products-container">
+                    <!-- محصولات به صورت داینامیک با جاوااسکریپت اضافه می‌شوند -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
+
+    <!-- MDB JS -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script> -->
+    <script>
+        // داده‌های نمونه برای محصولات
+        const products = [
+            { id: 1, name: 'لپ‌تاپ ایسوس', price: '12,500,000', rating: 4, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/4.webp' },
+            { id: 2, name: 'هدفون سونی', price: '3,200,000', rating: 5, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp' },
+            { id: 3, name: 'گوشی سامسونگ', price: '8,900,000', rating: 4, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/2.webp' },
+            { id: 4, name: 'ماوس بی‌سیم', price: '450,000', rating: 3, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/3.webp' },
+            { id: 5, name: 'کیبورد مکانیکی', price: '1,200,000', rating: 4, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/5.webp' },
+            { id: 6, name: 'مانیتور الجی', price: '6,300,000', rating: 5, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/6.webp' },
+            { id: 7, name: 'اسپیکر بلوتوث', price: '1,800,000', rating: 4, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/7.webp' },
+            { id: 8, name: 'هارد اکسترنال', price: '2,100,000', rating: 3, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/8.webp' },
+            { id: 9, name: 'تبلت اپل', price: '15,000,000', rating: 5, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/9.webp' },
+            { id: 10, name: 'پاوربانک', price: '750,000', rating: 4, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/10.webp' },
+            { id: 11, name: 'کیف لپ‌تاپ', price: '320,000', rating: 3, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/11.webp' },
+            { id: 12, name: 'کارت گرافیک', price: '9,500,000', rating: 5, image: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/12.webp' }
+        ];
+
+        // تابع برای نمایش محصولات
+        function renderProducts(cols = 4) {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+
+            // محاسبه سایز ستون‌ها بر اساس تعداد محصول در هر ردیف
+            const colClass = `col-md-${12 / cols} col-6`;
+
+            products.forEach(product => {
+                const stars = Array(product.rating).fill('<i class="fas fa-star text-warning"></i>').join('') +
+                    Array(5 - product.rating).fill('<i class="far fa-star text-warning"></i>').join('');
+
+                const productHtml = `
+                    <div class="${colClass}">
+                        <div class="card product-card">
+                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <div class="mb-2">${stars}</div>
+                                <h6 class="text-danger">${product.price} تومان</h6>
+                                <button class="btn btn-primary btn-sm">افزودن به سبد</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                container.innerHTML += productHtml;
+            });
+        }
+
+        // تغییر تعداد ستون‌ها
+        document.querySelectorAll('.change-grid').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.change-grid').forEach(b => b.classList.replace('btn-primary', 'btn-outline-primary'));
+                this.classList.replace('btn-outline-primary', 'btn-primary');
+                const cols = parseInt(this.getAttribute('data-cols'));
+                renderProducts(cols);
+            });
+        });
+
+        // بارگذاری اولیه
+        document.addEventListener('DOMContentLoaded', () => renderProducts(4));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروفایل شهرک صنعتی</title>
+    <!-- MDB RTL -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.rtl.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+     
+        .profile-header {
+            /* background: linear-gradient(135deg, #2c3e50, #3498db); */
+            background: rgb(25,49,255);
+            background: radial-gradient(circle, rgba(25,49,255,1) 0%, rgba(70,159,252,1) 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .stat-card {
+            transition: transform 0.3s;
+            border-radius: 15px;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .facility-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        .map-container {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .nav-pills .nav-link.active {
+            /* background-color: #3498db !important; */
+            border: none; border-bottom: 3px solid #3498db !important; color: #3498db; font-weight: 500;
+        }
+        .nav-pills .nav-link {
+            color: #2c3e50;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر پروفایل -->
+    <div class="profile-header py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2 text-center">
+                    <img src="https://shams-abad.com/uploads/Resources/Images/Portal/Logo/Logo.png" alt="لوگوی شهرک" class="profile-img rounded-circle">
+                </div>
+                <div class="col-md-7">
+                    <h1 class="h2 fw-bold">شهرک صنعتی پردیس</h1>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> استان تهران، شهرستان پردیس</p>
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i> 021-12345678</p>
+                    <p class="mb-0"><i class="fas fa-envelope me-2"></i> info@pardis-industrial.ir</p>
+                </div>
+                <div class="col-md-3 text-center text-md-end">
+                    <button class="btn btn-outline-light btn-rounded me-2"><i class="fas fa-phone me-1"></i> تماس</button>
+                    <button class="btn btn-light btn-rounded text-primary"><i class="fas fa-directions me-1"></i> مسیریابی</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <!-- آمار و ارقام -->
+        <div class="row mb-5">
+            <div class="col-md-3 mb-4">
+                <div class="stat-card card text-center py-4 shadow-sm">
+                    <h3 class="text-primary">120</h3>
+                    <p class="text-muted mb-0">واحد صنعتی فعال</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card card text-center py-4 shadow-sm">
+                    <h3 class="text-primary">45</h3>
+                    <p class="text-muted mb-0">هکتار مساحت</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card card text-center py-4 shadow-sm">
+                    <h3 class="text-primary">3500</h3>
+                    <p class="text-muted mb-0">شاغلین</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card card text-center py-4 shadow-sm">
+                    <h3 class="text-primary">1395</h3>
+                    <p class="text-muted mb-0">سال تأسیس</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- تب‌های محتوا -->
+        <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-mdb-toggle="pill" data-mdb-target="#pills-home" type="button" role="tab">اطلاعات کلی</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-mdb-toggle="pill" data-mdb-target="#pills-profile" type="button" role="tab">امکانات</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-contact-tab" data-mdb-toggle="pill" data-mdb-target="#pills-contact" type="button" role="tab">واحدهای فعال</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-map-tab" data-mdb-toggle="pill" data-mdb-target="#pills-map" type="button" role="tab">نقشه</button>
+            </li>
+        </ul>
+
+
+      
+
+        <!-- محتوای تب‌ها -->
+        <div class="tab-content" id="pills-tabContent">
+            <!-- تب اطلاعات کلی -->
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">درباره شهرک صنعتی پردیس</h4>
+                        <p class="card-text">
+                            شهرک صنعتی پردیس در سال 1395 در زمینی به مساحت 45 هکتار در شرق استان تهران تأسیس شد. این شهرک با دارا بودن 120 واحد صنعتی فعال در زمینه‌های مختلف از جمله مواد غذایی، پلاستیک، فلزات و الکترونیک، یکی از قطب‌های مهم صنعتی در منطقه به شمار می‌رود.
+                        </p>
+                        <p class="card-text">
+                            موقعیت استراتژیک این شهرک در نزدیکی آزادراه تهران-پردیس و دسترسی آسان به شبکه حمل و نقل جاده‌ای، مزیت رقابتی مهمی برای واحدهای مستقر در این شهرک محسوب می‌شود.
+                        </p>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5 class="mb-3">زیرساخت‌های اصلی</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        برق صنعتی
+                                        <span class="badge bg-primary rounded-pill">10 مگاوات</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        آب صنعتی
+                                        <span class="badge bg-primary rounded-pill">20 اینچ</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        گاز صنعتی
+                                        <span class="badge bg-primary rounded-pill">6 اینچ</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="mb-3">خدمات پشتیبانی</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">مرکز خدمات فنی و مهندسی</li>
+                                    <li class="list-group-item">مرکز تحقیقات و توسعه</li>
+                                    <li class="list-group-item">مرکز آموزش مهارت‌های صنعتی</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تب امکانات -->
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm text-center p-4">
+                            <div class="facility-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <h5>حمل و نقل</h5>
+                            <p class="text-muted">سیستم حمل و نقل داخلی و دسترسی به آزادراه</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm text-center p-4">
+                            <div class="facility-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h5>امنیت</h5>
+                            <p class="text-muted">حفاظت 24 ساعته و سیستم نظارت تصویری</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm text-center p-4">
+                            <div class="facility-icon">
+                                <i class="fas fa-fire-extinguisher"></i>
+                            </div>
+                            <h5>آتش‌نشانی</h5>
+                            <p class="text-muted">ایستگاه اختصاصی آتش‌نشانی صنعتی</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm text-center p-4">
+                            <div class="facility-icon">
+                                <i class="fas fa-clinic-medical"></i>
+                            </div>
+                            <h5>درمانگاه</h5>
+                            <p class="text-muted">مرکز درمانی مجهز برای کارکنان</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm text-center p-4">
+                            <div class="facility-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h5>رستوران</h5>
+                            <p class="text-muted">سلف سرویس و رستوران صنعتی</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm text-center p-4">
+                            <div class="facility-icon">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <h5>اینترنت پرسرعت</h5>
+                            <p class="text-muted">پوشش فیبر نوری در تمام شهرک</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تب واحدهای فعال -->
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">واحدهای صنعتی فعال</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>نام واحد</th>
+                                        <th>نوع فعالیت</th>
+                                        <th>تعداد پرسنل</th>
+                                        <th>تلفن</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>شرکت صنایع غذایی پردیس</td>
+                                        <td>تولید مواد غذایی</td>
+                                        <td>120</td>
+                                        <td>021-12345671</td>
+                                    </tr>
+                                    <tr>
+                                        <td>پلاستیک سازان شرق</td>
+                                        <td>تولید محصولات پلاستیکی</td>
+                                        <td>85</td>
+                                        <td>021-12345672</td>
+                                    </tr>
+                                    <tr>
+                                        <td>فن‌آوران الکترونیک</td>
+                                        <td>تولید قطعات الکترونیکی</td>
+                                        <td>65</td>
+                                        <td>021-12345673</td>
+                                    </tr>
+                                    <tr>
+                                        <td>فلزات سبک پردیس</td>
+                                        <td>تولید محصولات فلزی</td>
+                                        <td>110</td>
+                                        <td>021-12345674</td>
+                                    </tr>
+                                    <tr>
+                                        <td>شیمیایی پردیس</td>
+                                        <td>تولید مواد شیمیایی</td>
+                                        <td>75</td>
+                                        <td>021-12345675</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تب نقشه -->
+            <div class="tab-pane fade" id="pills-map" role="tabpanel">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">موقعیت جغرافیایی</h4>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.963111038374!2d51.64786031526905!3d35.71122198018991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQyJzQwLjQiTiA1McKwMzgnNTkuNiJF!5e0!3m2!1sen!2sir!4v1620000000000!5m2!1sen!2sir" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5>دسترسی‌ها</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-road me-2"></i> 5 کیلومتری آزادراه تهران-پردیس</li>
+                                    <li class="list-group-item"><i class="fas fa-subway me-2"></i> 10 کیلومتری ایستگاه متروی پردیس</li>
+                                    <li class="list-group-item"><i class="fas fa-bus me-2"></i> خطوط اتوبوسرانی مستقیم از پایانه شرق</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>اطلاعات تماس</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-phone me-2"></i> 021-12345678</li>
+                                    <li class="list-group-item"><i class="fas fa-fax me-2"></i> 021-12345679</li>
+                                    <li class="list-group-item"><i class="fas fa-envelope me-2"></i> info@pardis-industrial.ir</li>
+                                    <li class="list-group-item"><i class="fas fa-globe me-2"></i> www.pardis-industrial.ir</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <footer class="  pt-5 mt-5 mb-2">
+        <div class="container">
+            <div class="row">
+                
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">© 1402 کلیه حقوق برای شهرک صنعتی پردیس محفوظ است</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- اسکریپت‌های MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+</body>
+</html>

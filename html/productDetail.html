@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزئیات محصول | شهرک صنعتی پردیس</title>
+    <!-- MDB RTL -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.rtl.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../asset/css/base.css">
+    <style>
+       
+        .product-header {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .main-img {
+            height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        .thumb-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .thumb-img:hover, .thumb-img.active {
+            border-color: #3498db;
+        }
+        .product-title {
+            color: #2c3e50;
+            font-weight: 700;
+            border-bottom: 2px solid #f1f1f1;
+            padding-bottom: 15px;
+        }
+        .price-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: #6c757d;
+        }
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 2;
+        }
+        .specs-table td {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .specs-table tr:last-child td {
+            border-bottom: none;
+        }
+        .tab-content {
+            background-color: #fff;
+            border-radius: 0 0 10px 10px;
+            padding: 25px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .related-product {
+            transition: all 0.3s;
+            border-radius: 10px;
+        }
+        .related-product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="container-xxl">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mx-1 mx-lg-0 my-3 mb-2 ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img
+                    src="https://shams-abad.com/uploads/Resources/Images/Portal/Logo/Logo.png" height="50" alt=""></a>
+            <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link active" aria-current="page" href="#">خانه</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">درباره ما</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">استخدامی</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">اخبار</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="btn btn-outline-primary ">
+                        <p class="h6">ورود</p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
+        <div class="container-fluid">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="#">خانه</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <a href="#">فروشگاه</a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </nav>
+    <!-- مسیر ناوبری -->
+   
+
+    <!-- بخش اصلی محصول -->
+    <div class="container my-5">
+        <div class="product-header p-4 mb-4">
+            <div class="row">
+                <!-- گالری تصاویر -->
+                <div class="col-lg-6">
+                    <div class="position-relative mb-3">
+                        <img id="mainImage" src="https://shams-abad.com/uploads/Resources/File/638749535806504117/8.jpg" class="main-img img-fluid w-100" alt="محصول نمونه">
+                        <span class="discount-badge badge bg-danger py-2 px-3">15% تخفیف</span>
+                    </div>
+                    <div class="d-flex justify-content-start overflow-scroll">
+                        <img src="https://shams-abad.com/uploads/Resources/Attachments/4fa8c238-ab10-4ec9-817d-6e49db56f84b/3_638749534482285937_min.jpg" class="thumb-img me-2 active" onclick="changeImage(this)">
+                        <img src="https://shams-abad.com/uploads/Resources/Attachments/4fa8c238-ab10-4ec9-817d-6e49db56f84b/3_638749534482285937_min.jpg" class="thumb-img me-2" onclick="changeImage(this)">
+                        <img src="https://shams-abad.com/uploads/Resources/Attachments/4fa8c238-ab10-4ec9-817d-6e49db56f84b/5_638749534578825404_min.jpg" class="thumb-img me-2" onclick="changeImage(this)">
+                        <img src="https://shams-abad.com/uploads/Resources/Attachments/4fa8c238-ab10-4ec9-817d-6e49db56f84b/4_638749534524329595_min.jpg" class="thumb-img" onclick="changeImage(this)">
+                    </div>
+                </div>
+
+                <!-- اطلاعات محصول -->
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <h1 class="product-title mb-3">روغن خوراکی گیاهی درجه یک</h1>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="me-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star-half-alt text-warning"></i>
+                        </div>
+                        <span class="text-muted">(47 نظر)</span>
+                    </div>
+
+                    <div class="price-box mb-4">
+                        <div class="d-flex align-items-center">
+                            <h3 class="text-success mb-0">185,000 تومان</h3>
+                            <span class="original-price ms-3">218,000 تومان</span>
+                        </div>
+                        <p class="text-success mb-0 mt-1"><small>موجود در انبار</small></p>
+                    </div>
+
+                    <p class="mb-4">روغن خوراکی گیاهی درجه یک با کیفیت عالی و بدون کلسترول، مناسب برای پخت و پز و سرخ کردن با نقطه دود بالا.</p>
+
+                    <div class="mb-4">
+                        <h5 class="mb-3">ویژگی‌های اصلی:</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex align-items-center ps-0">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>مناسب برای سرخ کردن عمیق</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center ps-0">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>فاقد کلسترول و ترانس</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center ps-0">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>حاوی ویتامین E و D</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center ps-0">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>بسته‌بندی مقاوم و بهداشتی</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="quantity" class="form-label">تعداد:</label>
+                            <div class="input-group">
+                                <button class="btn btn-outline-secondary" type="button" onclick="decreaseQuantity()">-</button>
+                                <input type="number" class="form-control text-center" id="quantity" value="1" min="1">
+                                <button class="btn btn-outline-secondary" type="button" onclick="increaseQuantity()">+</button>
+                            </div>
+                        </div>
+                        <div class="col-md-8 d-flex align-items-end">
+                            <button class="btn btn-primary w-100 py-2">
+                                <i class="fas fa-cart-plus me-2"></i> افزودن به سبد خرید
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-top">
+                        <button class="btn btn-outline-secondary me-2">
+                            <i class="far fa-heart me-1"></i> علاقه‌مندی‌ها
+                        </button>
+                        <button class="btn btn-outline-secondary">
+                            <i class="fas fa-share-alt me-1"></i> اشتراک‌گذاری
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- تب‌های اطلاعات محصول -->
+        <ul class="nav nav-tabs" id="product-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="description-tab" data-mdb-toggle="tab" data-mdb-target="#description" type="button" role="tab">
+                    توضیحات محصول
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="specs-tab" data-mdb-toggle="tab" data-mdb-target="#specs" type="button" role="tab">
+                    مشخصات فنی
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="reviews-tab" data-mdb-toggle="tab" data-mdb-target="#reviews" type="button" role="tab">
+                    نظرات (47)
+                </button>
+            </li>
+        </ul>
+
+        <!-- محتوای تب‌ها -->
+        <div class="tab-content" id="product-tabs-content">
+            <!-- تب توضیحات محصول -->
+            <div class="tab-pane fade show active" id="description" role="tabpanel">
+                <h4 class="mb-4">روغن خوراکی گیاهی درجه یک</h4>
+                <p>روغن خوراکی گیاهی تولید شده با آخرین تکنولوژی روز دنیا، کاملاً بهداشتی و مناسب برای مصرف روزانه خانواده‌های ایرانی. این محصول با بهره‌گیری از بهترین دانه‌های روغنی و فرآیندهای پیشرفته تصفیه، عاری از هرگونه مواد مضر و حاوی ویتامین‌های ضروری بدن می‌باشد.</p>
+                
+                <h5 class="mt-4">مزایای استفاده:</h5>
+                <ul>
+                    <li>حفظ طعم و عطر طبیعی غذا</li>
+                    <li>پایداری حرارتی بالا (مناسب برای سرخ کردن)</li>
+                    <li>فاقد کلسترول و اسیدهای چرب ترانس</li>
+                    <li>حاوی ویتامین‌های E و D</li>
+                    <li>بسته‌بندی مقاوم در برابر نفوذ نور و هوا</li>
+                </ul>
+                
+                <h5 class="mt-4">روش مصرف:</h5>
+                <p>این روغن برای تمامی مصارف پخت و پز، سالاد و سرخ کردن مناسب است. برای حفظ کیفیت، پس از باز کردن درب قوطی، در جای خشک و خنک و دور از نور مستقیم آفتاب نگهداری شود.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <img src="https://via.placeholder.com/400x300?text=تصویر+کاربرد" class="img-fluid rounded mb-3" alt="تصویر کاربرد">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://via.placeholder.com/400x300?text=تصویر+بسته‌بندی" class="img-fluid rounded" alt="تصویر بسته‌بندی">
+                    </div>
+                </div>
+            </div>
+
+            <!-- تب مشخصات فنی -->
+            <div class="tab-pane fade" id="specs" role="tabpanel">
+                <table class="table specs-table">
+                    <tbody>
+                        <tr>
+                            <td width="30%">برند</td>
+                            <td>پردیس</td>
+                        </tr>
+                        <tr>
+                            <td>کد محصول</td>
+                            <td>PRD-OIL-001</td>
+                        </tr>
+                        <tr>
+                            <td>نوع محصول</td>
+                            <td>روغن خوراکی گیاهی</td>
+                        </tr>
+                        <tr>
+                            <td>حجم</td>
+                            <td>900 میلی‌لیتر</td>
+                        </tr>
+                        <tr>
+                            <td>مواد تشکیل دهنده</td>
+                            <td>روغن گیاهی تصفیه شده، ویتامین E، ویتامین D</td>
+                        </tr>
+                        <tr>
+                            <td>نوع بسته‌بندی</td>
+                            <td>بطری پلاستیکی مقاوم</td>
+                        </tr>
+                        <tr>
+                            <td>مدت ماندگاری</td>
+                            <td>24 ماه</td>
+                        </tr>
+                        <tr>
+                            <td>شرایط نگهداری</td>
+                            <td>در جای خشک و خنک و دور از نور مستقیم آفتاب</td>
+                        </tr>
+                        <tr>
+                            <td>کشور تولیدکننده</td>
+                            <td>ایران</td>
+                        </tr>
+                        <tr>
+                            <td>شرکت تولیدی</td>
+                            <td>صنایع غذایی پردیس</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- تب نظرات -->
+            <div class="tab-pane fade" id="reviews" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-body text-center">
+                                <h3 class="mb-3">4.3 <small class="text-muted">/5</small></h3>
+                                <div class="mb-3">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                </div>
+                                <p class="text-muted">بر اساس 47 نظر</p>
+                            </div>
+                        </div>
+
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">نظر خود را ثبت کنید</h5>
+                                <form>
+                                    <div class="mb-3">
+                                        <label class="form-label">امتیاز شما</label>
+                                        <div class="rating">
+                                            <i class="far fa-star" data-rating="1"></i>
+                                            <i class="far fa-star" data-rating="2"></i>
+                                            <i class="far fa-star" data-rating="3"></i>
+                                            <i class="far fa-star" data-rating="4"></i>
+                                            <i class="far fa-star" data-rating="5"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-outline mb-3">
+                                        <textarea class="form-control" id="review-text" rows="4"></textarea>
+                                        <label class="form-label" for="review-text">نظر شما</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <input type="text" class="form-control" placeholder="نام">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <input type="email" class="form-control" placeholder="ایمیل">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100">ثبت نظر</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="comment-list">
+                            <div class="d-flex mb-4">
+                                <img src="https://via.placeholder.com/50" class="rounded-circle me-3" width="50" height="50" alt="کاربر">
+                                <div>
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="fw-bold mb-1">محمد رضایی</h6>
+                                        <small class="text-muted">2 روز پیش</small>
+                                    </div>
+                                    <div class="mb-2">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    </div>
+                                    <p class="mb-0">روغن بسیار با کیفیتی هست. برای سرخ کردن هم عالیه و اصطلاحاً نمیسوزه. بسته‌بندی خوبی هم داره.</p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex mb-4">
+                                <img src="https://via.placeholder.com/50" class="rounded-circle me-3" width="50" height="50" alt="کاربر">
+                                <div>
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="fw-bold mb-1">فاطمه محمدی</h6>
+                                        <small class="text-muted">1 هفته پیش</small>
+                                    </div>
+                                    <div class="mb-2">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="far fa-star text-warning"></i>
+                                    </div>
+                                    <p class="mb-0">کیفیت خوبی داره ولی قیمتش نسبت به سایر برندها کمی بالاتره. البته به نظرم ارزشش رو داره.</p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex">
+                                <img src="https://via.placeholder.com/50" class="rounded-circle me-3" width="50" height="50" alt="کاربر">
+                                <div>
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="fw-bold mb-1">علی کریمی</h6>
+                                        <small class="text-muted">2 هفته پیش</small>
+                                    </div>
+                                    <div class="mb-2">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star-half-alt text-warning"></i>
+                                    </div>
+                                    <p class="mb-0">من برای سالاد استفاده کردم، واقعا طعم غذا رو عوض میکنه. پیشنهاد میکنم حتما امتحان کنید.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- محصولات مرتبط -->
+        <div class="mt-5 pt-4">
+            <h3 class="mb-4">محصولات مرتبط</h3>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card related-product h-100 shadow-sm">
+                        <img src="https://via.placeholder.com/200x150?text=محصول+1" class="card-img-top" alt="محصول 1">
+                        <div class="card-body">
+                            <h5 class="card-title">روغن مایع گیاهی</h5>
+                            <div class="mb-2">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                            </div>
+                            <p class="text-success mb-0">165,000 تومان</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-sm btn-outline-primary w-100">مشاهده جزئیات</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card related-product h-100 shadow-sm">
+                        <img src="https://via.placeholder.com/200x150?text=محصول+2" class="card-img-top" alt="محصول 2">
+                        <div class="card-body">
+                            <h5 class="card-title">روغن سرخ کردنی</h5>
+                            <div class="mb-2">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star-half-alt text-warning"></i>
+                            </div>
+                            <p class="text-success mb-0">195,000 تومان</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-sm btn-outline-primary w-100">مشاهده جزئیات</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card related-product h-100 shadow-sm">
+                        <img src="https://via.placeholder.com/200x150?text=محصول+3" class="card-img-top" alt="محصول 3">
+                        <div class="card-body">
+                            <h5 class="card-title">روغن کنجد</h5>
+                            <div class="mb-2">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                            <p class="text-success mb-0">245,000 تومان</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-sm btn-outline-primary w-100">مشاهده جزئیات</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card related-product h-100 shadow-sm">
+                        <img src="https://via.placeholder.com/200x150?text=محصول+4" class="card-img-top" alt="محصول 4">
+                        <div class="card-body">
+                            <h5 class="card-title">روغن زیتون</h5>
+                            <div class="mb-2">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                            </div>
+                            <p class="text-success mb-0">285,000 تومان</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-sm btn-outline-primary w-100">مشاهده جزئیات</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="  pt-5 mt-5 mb-2">
+        <div class="container">
+            <div class="row">
+                
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">© 1402 کلیه حقوق برای شهرک صنعتی پردیس محفوظ است</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- اسکریپت‌ها -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
+    <script>
+        // تغییر تصویر اصلی با کلیک بر روی تصاویر کوچک
+        function changeImage(element) {
+            document.querySelectorAll('.thumb-img').forEach(img => {
+                img.classList.remove('active');
+            });
+            element.classList.add('active');
+            document.getElementById('mainImage').src = element.src;
+        }
+
+        // افزایش و کاهش تعداد محصول
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        }
+
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        }
+
+        // سیستم امتیازدهی
+        document.querySelectorAll('.rating i').forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = this.getAttribute('data-rating');
+                const stars = document.querySelectorAll('.rating i');
+                
+                stars.forEach((s, index) => {
+                    if (index < rating) {
+                        s.classList.remove('far');
+                        s.classList.add('fas');
+                    } else {
+                        s.classList.remove('fas');
+                        s.classList.add('far');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
