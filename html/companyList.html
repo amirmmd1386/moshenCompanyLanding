@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست شرکت‌ها</title>
+    <!-- MDB RTL -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.rtl.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../asset/css/base.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #f8f9fa;
+            --accent-color: #4cc9f0;
+        }
+        
+        body {
+            font-family: 'Vazir', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .company-card {
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: none;
+            height: 100%;
+        }
+        
+        .company-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .company-logo {
+            height: 60px;
+            width: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        
+        .search-box {
+            border-radius: 20px;
+            padding: 10px 15px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .filter-btn {
+            border-radius: 20px;
+            padding: 8px 15px;
+        }
+        
+        .mobile-filter {
+            display: none;
+        }
+        
+        @media (max-width: 992px) {
+            .desktop-filter {
+                display: none;
+            }
+            
+            .mobile-filter {
+                display: block;
+            }
+        }
+        
+        .badge-status {
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+        
+        .badge-active {
+            background-color: #e6f7ee;
+            color: #00a854;
+        }
+        
+        .badge-inactive {
+            background-color: #fff2f0;
+            color: #f5222d;
+        }
+        
+        .range-value {
+            display: inline-block;
+            min-width: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .category-badge {
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            background-color: #f0f5ff;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body class="container-xxl">
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mx-1 mx-lg-0 my-3 mb-2 ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img
+                    src="https://shams-abad.com/uploads/Resources/Images/Portal/Logo/Logo.png" height="50" alt=""></a>
+            <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link active" aria-current="page" href="#">خانه</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">درباره ما</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">استخدامی</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">اخبار</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="btn btn-outline-primary ">
+                        <p class="h6">ورود</p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
+        <div class="container-fluid">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="#">خانه</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <a href="#">فروشگاه</a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </nav>
+
+    <!-- Main Content -->
+    <div class=" ">
+        <!-- Search and Filter Section -->
+        <div class="row mb-4">
+            <div class="col-lg-9 col-md-8 mb-3 mb-md-0">
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                    <input type="text" class="form-control search-box border-start-0" placeholder="جستجو بر اساس نام شرکت...">
+                    <button class="btn btn-outline-primary filter-btn">
+                        <i class="fas fa-filter me-1"></i> فیلترها
+                    </button>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4">
+                <select class="form-select">
+                    <option selected>مرتب‌سازی</option>
+                    <option>نام (صعودی)</option>
+                    <option>نام (نزولی)</option>
+                    <option>تعداد کارمندان</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Mobile Filter Button -->
+        <div class="row mb-4 mobile-filter">
+            <div class="col-12">
+                <button class="btn btn-outline-primary w-100" data-mdb-toggle="modal" data-mdb-target="#filterModal">
+                    <i class="fas fa-sliders-h me-2"></i> فیلترهای پیشرفته
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Desktop Filters -->
+            <div class="col-lg-3 desktop-filter">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0 fw-bold">فیلترها</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">دسته‌بندی</label>
+                            <select class="form-select">
+                                <option selected>همه دسته‌ها</option>
+                                <option>فناوری اطلاعات</option>
+                                <option>صنعتی</option>
+                                <option>خدماتی</option>
+                                <option>بازرگانی</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">وضعیت</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="activeCheck" checked>
+                                <label class="form-check-label" for="activeCheck">فعال</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="inactiveCheck">
+                                <label class="form-check-label" for="inactiveCheck">غیرفعال</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">تعداد کارمندان</label>
+                            <div class="d-flex align-items-center">
+                                <input type="range" class="form-range flex-grow-1 me-2" min="1" max="500" step="1" id="employeeRange" value="50">
+                                <span class="range-value">50</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <small>1 نفر</small>
+                                <small>500+ نفر</small>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary w-100 mt-2">اعمال فیلترها</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Companies List -->
+            <div class="col-lg-9">
+                <div class="row">
+                    <!-- Company Card 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-active">فعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">شرکت صنعتی نوین</h6>
+                                        <small class="text-muted">تهران</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 120 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1395</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">صنعتی</span>
+                                    <span class="category-badge">تولیدی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company Card 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-active">فعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">شرکت صنعتی نوین</h6>
+                                        <small class="text-muted">تهران</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 120 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1395</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">صنعتی</span>
+                                    <span class="category-badge">تولیدی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company Card 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-active">فعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">شرکت صنعتی نوین</h6>
+                                        <small class="text-muted">تهران</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 120 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1395</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">صنعتی</span>
+                                    <span class="category-badge">تولیدی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company Card 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-active">فعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">شرکت صنعتی نوین</h6>
+                                        <small class="text-muted">تهران</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 120 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1395</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">صنعتی</span>
+                                    <span class="category-badge">تولیدی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company Card 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-active">فعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">شرکت صنعتی نوین</h6>
+                                        <small class="text-muted">تهران</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 120 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1395</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">صنعتی</span>
+                                    <span class="category-badge">تولیدی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company Card 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-active">فعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">شرکت صنعتی نوین</h6>
+                                        <small class="text-muted">تهران</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 120 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1395</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">صنعتی</span>
+                                    <span class="category-badge">تولیدی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Company Card 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-active">فعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">شرکت صنعتی نوین</h6>
+                                        <small class="text-muted">تهران</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 120 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1395</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">صنعتی</span>
+                                    <span class="category-badge">تولیدی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Card 2 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-active">فعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">فناوری اطلاعات پیشرو</h6>
+                                        <small class="text-muted">اصفهان</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 85 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1398</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">نرم‌افزار</span>
+                                    <span class="category-badge">فناوری</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Card 3 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-inactive">غیرفعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">خدمات بازرگانی کیهان</h6>
+                                        <small class="text-muted">مشهد</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 42 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1390</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">بازرگانی</span>
+                                    <span class="category-badge">واردات</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Card 4 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-active">فعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">طراحی معماری آرمان</h6>
+                                        <small class="text-muted">شیراز</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 18 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1400</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">معماری</span>
+                                    <span class="category-badge">طراحی</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Card 5 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-active">فعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">مشاوره مدیریت راهبردی</h6>
+                                        <small class="text-muted">تهران</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 25 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1396</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">مشاوره</span>
+                                    <span class="category-badge">مدیریت</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Card 6 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card">
+                            <div class="card-body p-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <span class="badge-status badge-inactive">غیرفعال</span>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-muted shadow-none p-0" data-mdb-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>مشاهده</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>ویرایش</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                                         alt="Company Logo" class="company-logo me-3">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">ترابری بین‌المللی کالا</h6>
+                                        <small class="text-muted">بندرعباس</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-muted"><i class="fas fa-users me-1"></i> 75 کارمند</small>
+                                    <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> تأسیس 1385</small>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <span class="category-badge">حمل و نقل</span>
+                                    <span class="category-badge">بین‌الملل</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">قبلی</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">بعدی</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Modal for Mobile -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="filterModalLabel">فیلترهای پیشرفته</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">دسته‌بندی</label>
+                        <select class="form-select">
+                            <option selected>همه دسته‌ها</option>
+                            <option>فناوری اطلاعات</option>
+                            <option>صنعتی</option>
+                            <option>خدماتی</option>
+                            <option>بازرگانی</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">وضعیت</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="mobileActiveCheck" checked>
+                            <label class="form-check-label" for="mobileActiveCheck">فعال</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="mobileInactiveCheck">
+                            <label class="form-check-label" for="mobileInactiveCheck">غیرفعال</label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">تعداد کارمندان</label>
+                        <div class="d-flex align-items-center">
+                            <input type="range" class="form-range flex-grow-1 me-2" min="1" max="500" step="1" id="mobileEmployeeRange" value="50">
+                            <span class="range-value">50</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <small>1 نفر</small>
+                            <small>500+ نفر</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-mdb-dismiss="modal">انصراف</button>
+                    <button type="button" class="btn btn-primary">اعمال فیلترها</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="  pt-5 mt-5 mb-2">
+        <div class="container">
+            <div class="row">
+                
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">© 1402 کلیه حقوق برای شهرک صنعتی پردیس محفوظ است</p>
+            </div>
+        </div>
+    </footer>
+    <!-- MDB -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+    <!-- Persian Font -->
+    <script src="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.js"></script>
+    
+    <script>
+        // نمایش مقدار range هنگام تغییر
+        document.getElementById('employeeRange').addEventListener('input', function() {
+            document.querySelector('#employeeRange + .range-value').textContent = this.value;
+        });
+        
+        document.getElementById('mobileEmployeeRange').addEventListener('input', function() {
+            document.querySelector('#mobileEmployeeRange + .range-value').textContent = this.value;
+        });
+    </script>
+</body>
+</html>

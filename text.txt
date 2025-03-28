@@ -1,126 +1,494 @@
-.banner {
-            position: relative;
-            height: 150px; /* ارتفاع کوتاه */
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary-color), #5c6bc0);
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست شرکت‌ها</title>
+    <!-- MDB -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.rtl.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3f51b5;
+            --secondary-color: #f5f5f5;
+            --accent-color: #ff4081;
+        }
+        
+        body {
+            font-family: 'Vazir', sans-serif;
+            background-color: #f9f9f9;
+        }
+        
+        .company-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: none;
         }
         
-        /* دایره‌های بلور شده */
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            animation: float 15s infinite linear;
+        .company-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         }
         
-        .bubble:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
+        .company-logo {
+            height: 80px;
+            object-fit: contain;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
         }
         
-        .bubble:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            bottom: 30%;
-            right: 15%;
-            animation-delay: 2s;
+        .search-box {
+            border-radius: 24px;
+            padding: 12px 20px;
+            border: 1px solid #e0e0e0;
         }
         
-        .bubble:nth-child(3) {
-            width: 70px;
-            height: 70px;
-            top: 50%;
-            right: 25%;
-            animation-delay: 4s;
+        .filter-btn {
+            border-radius: 24px;
+            padding: 10px 20px;
         }
         
-        .bubble:nth-child(4) {
-            width: 120px;
-            height: 120px;
-            bottom: 10%;
-            left: 20%;
-            animation-delay: 6s;
+        .mobile-filter {
+            display: none;
         }
         
-        /* متن متغیر */
-        .changing-text {
-            position: relative;
-            z-index: 2;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--text-color);
-            text-align: center;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .changing-text span {
-            position: absolute;
-            opacity: 0;
-            animation: textRotate 12s infinite;
-        }
-        
-        .changing-text span:nth-child(1) {
-            animation-delay: 0s;
-        }
-        
-        .changing-text span:nth-child(2) {
-            animation-delay: 4s;
-        }
-        
-        .changing-text span:nth-child(3) {
-            animation-delay: 8s;
-        }
-        
-        /* انیمیشن‌ها */
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-            }
-        }
-        
-        @keyframes textRotate {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            5%, 30% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            35%, 100% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-        }
-        
-        /* ریسپانسیو */
-        @media (max-width: 768px) {
-            .banner {
-                height: 120px;
+        @media (max-width: 992px) {
+            .desktop-filter {
+                display: none;
             }
             
-            .changing-text {
-                font-size: 2rem;
+            .mobile-filter {
+                display: block;
             }
             
-            .bubble {
-                backdrop-filter: blur(5px);
-                -webkit-backdrop-filter: blur(5px);
+            .company-card {
+                margin-bottom: 20px;
             }
-        } */
+        }
+        
+        .badge-custom {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="container-xxl">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-primary" href="#">
+                <i class="fas fa-building me-2"></i>شرکت‌ها
+            </a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-home me-1"></i> صفحه اصلی</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-plus-circle me-1"></i> شرکت جدید</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-5">
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <h2 class="fw-bold mb-0">لیست شرکت‌ها</h2>
+                <p class="text-muted">مدیریت و مشاهده شرکت‌های ثبت شده</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <button class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus me-1"></i> افزودن شرکت
+                </button>
+            </div>
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="row mb-4">
+            <div class="col-lg-9 col-md-8 mb-3 mb-md-0">
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                    <input type="text" class="form-control search-box border-start-0" placeholder="جستجو شرکت...">
+                    <button class="btn btn-primary filter-btn">
+                        <i class="fas fa-filter me-1"></i> فیلترها
+                    </button>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-4">
+                <select class="form-select">
+                    <option selected>مرتب‌سازی بر اساس</option>
+                    <option>نام شرکت (صعودی)</option>
+                    <option>نام شرکت (نزولی)</option>
+                    <option>تاریخ ثبت (جدیدترین)</option>
+                    <option>تاریخ ثبت (قدیمی‌ترین)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Mobile Filter Button -->
+        <div class="row mb-4 mobile-filter">
+            <div class="col-12">
+                <button class="btn btn-outline-primary w-100" data-mdb-toggle="modal" data-mdb-target="#filterModal">
+                    <i class="fas fa-sliders-h me-2"></i> فیلترهای پیشرفته
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Desktop Filters -->
+            <div class="col-lg-3 desktop-filter">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0 fw-bold">فیلترها</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">دسته‌بندی</label>
+                            <select class="form-select">
+                                <option selected>همه دسته‌ها</option>
+                                <option>فناوری اطلاعات</option>
+                                <option>بازرگانی</option>
+                                <option>صنعتی</option>
+                                <option>خدماتی</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">وضعیت</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="activeCheck" checked>
+                                <label class="form-check-label" for="activeCheck">فعال</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="inactiveCheck">
+                                <label class="form-check-label" for="inactiveCheck">غیرفعال</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">تعداد کارمندان</label>
+                            <input type="range" class="form-range" min="1" max="500" step="1" id="employeeRange">
+                            <div class="d-flex justify-content-between">
+                                <small>1 نفر</small>
+                                <small>500+ نفر</small>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary w-100 mt-2">اعمال فیلترها</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Companies List -->
+            <div class="col-lg-9">
+                <div class="row">
+                    <!-- Company Card 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card h-100">
+                            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                                <span class="badge-custom">فعال</span>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-muted shadow-none" data-mdb-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">مشاهده جزئیات</a></li>
+                                        <li><a class="dropdown-item" href="#">ویرایش</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">غیرفعال کردن</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <img src="https://via.placeholder.com/150x80?text=Company+Logo" alt="Company Logo" class="company-logo mb-3">
+                                <h5 class="card-title fw-bold">شرکت فناوری اطلاعات نوین</h5>
+                                <p class="card-text text-muted mb-2">
+                                    <i class="fas fa-users me-1"></i> 120 کارمند
+                                </p>
+                                <p class="card-text text-muted mb-3">
+                                    <i class="fas fa-map-marker-alt me-1"></i> تهران، خیابان ولیعصر
+                                </p>
+                                <div class="d-flex justify-content-center">
+                                    <span class="badge bg-light text-dark me-2">IT</span>
+                                    <span class="badge bg-light text-dark">نرم‌افزار</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="#" class="btn btn-outline-primary btn-sm">مشاهده جزئیات</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Card 2 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card h-100">
+                            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                                <span class="badge-custom">فعال</span>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-muted shadow-none" data-mdb-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">مشاهده جزئیات</a></li>
+                                        <li><a class="dropdown-item" href="#">ویرایش</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">غیرفعال کردن</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <img src="https://via.placeholder.com/150x80?text=Company+Logo" alt="Company Logo" class="company-logo mb-3">
+                                <h5 class="card-title fw-bold">صنایع فلزی پیشرفته</h5>
+                                <p class="card-text text-muted mb-2">
+                                    <i class="fas fa-users me-1"></i> 350 کارمند
+                                </p>
+                                <p class="card-text text-muted mb-3">
+                                    <i class="fas fa-map-marker-alt me-1"></i> اصفهان، شهرک صنعتی
+                                </p>
+                                <div class="d-flex justify-content-center">
+                                    <span class="badge bg-light text-dark me-2">صنعتی</span>
+                                    <span class="badge bg-light text-dark">فلزات</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="#" class="btn btn-outline-primary btn-sm">مشاهده جزئیات</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Card 3 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card h-100">
+                            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                                <span class="badge-custom bg-secondary">غیرفعال</span>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-muted shadow-none" data-mdb-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">مشاهده جزئیات</a></li>
+                                        <li><a class="dropdown-item" href="#">ویرایش</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-success" href="#">فعال کردن</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <img src="https://via.placeholder.com/150x80?text=Company+Logo" alt="Company Logo" class="company-logo mb-3">
+                                <h5 class="card-title fw-bold">خدمات بازرگانی بین‌المللی</h5>
+                                <p class="card-text text-muted mb-2">
+                                    <i class="fas fa-users me-1"></i> 45 کارمند
+                                </p>
+                                <p class="card-text text-muted mb-3">
+                                    <i class="fas fa-map-marker-alt me-1"></i> شیراز، بلوار مدرس
+                                </p>
+                                <div class="d-flex justify-content-center">
+                                    <span class="badge bg-light text-dark me-2">بازرگانی</span>
+                                    <span class="badge bg-light text-dark">بین‌الملل</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="#" class="btn btn-outline-primary btn-sm">مشاهده جزئیات</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Card 4 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card h-100">
+                            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                                <span class="badge-custom">فعال</span>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-muted shadow-none" data-mdb-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">مشاهده جزئیات</a></li>
+                                        <li><a class="dropdown-item" href="#">ویرایش</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">غیرفعال کردن</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <img src="https://via.placeholder.com/150x80?text=Company+Logo" alt="Company Logo" class="company-logo mb-3">
+                                <h5 class="card-title fw-bold">مشاوره مدیریت راهبردی</h5>
+                                <p class="card-text text-muted mb-2">
+                                    <i class="fas fa-users me-1"></i> 28 کارمند
+                                </p>
+                                <p class="card-text text-muted mb-3">
+                                    <i class="fas fa-map-marker-alt me-1"></i> مشهد، بلوار وکیل‌آباد
+                                </p>
+                                <div class="d-flex justify-content-center">
+                                    <span class="badge bg-light text-dark me-2">مشاوره</span>
+                                    <span class="badge bg-light text-dark">مدیریت</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="#" class="btn btn-outline-primary btn-sm">مشاهده جزئیات</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Card 5 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card h-100">
+                            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                                <span class="badge-custom">فعال</span>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-muted shadow-none" data-mdb-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">مشاهده جزئیات</a></li>
+                                        <li><a class="dropdown-item" href="#">ویرایش</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="#">غیرفعال کردن</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <img src="https://via.placeholder.com/150x80?text=Company+Logo" alt="Company Logo" class="company-logo mb-3">
+                                <h5 class="card-title fw-bold">طراحی و معماری آرمان</h5>
+                                <p class="card-text text-muted mb-2">
+                                    <i class="fas fa-users me-1"></i> 15 کارمند
+                                </p>
+                                <p class="card-text text-muted mb-3">
+                                    <i class="fas fa-map-marker-alt me-1"></i> تبریز، خیابان آزادی
+                                </p>
+                                <div class="d-flex justify-content-center">
+                                    <span class="badge bg-light text-dark me-2">معماری</span>
+                                    <span class="badge bg-light text-dark">طراحی</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="#" class="btn btn-outline-primary btn-sm">مشاهده جزئیات</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Card 6 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card company-card h-100">
+                            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                                <span class="badge-custom bg-secondary">غیرفعال</span>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-muted shadow-none" data-mdb-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">مشاهده جزئیات</a></li>
+                                        <li><a class="dropdown-item" href="#">ویرایش</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-success" href="#">فعال کردن</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <img src="https://via.placeholder.com/150x80?text=Company+Logo" alt="Company Logo" class="company-logo mb-3">
+                                <h5 class="card-title fw-bold">ترابری بین‌المللی کالا</h5>
+                                <p class="card-text text-muted mb-2">
+                                    <i class="fas fa-users me-1"></i> 80 کارمند
+                                </p>
+                                <p class="card-text text-muted mb-3">
+                                    <i class="fas fa-map-marker-alt me-1"></i> بندرعباس، جاده قدیم بندر
+                                </p>
+                                <div class="d-flex justify-content-center">
+                                    <span class="badge bg-light text-dark me-2">ترابری</span>
+                                    <span class="badge bg-light text-dark">لجستیک</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="#" class="btn btn-outline-primary btn-sm">مشاهده جزئیات</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">قبلی</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">بعدی</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Modal for Mobile -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="filterModalLabel">فیلترهای پیشرفته</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">دسته‌بندی</label>
+                        <select class="form-select">
+                            <option selected>همه دسته‌ها</option>
+                            <option>فناوری اطلاعات</option>
+                            <option>بازرگانی</option>
+                            <option>صنعتی</option>
+                            <option>خدماتی</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">وضعیت</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="mobileActiveCheck" checked>
+                            <label class="form-check-label" for="mobileActiveCheck">فعال</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="mobileInactiveCheck">
+                            <label class="form-check-label" for="mobileInactiveCheck">غیرفعال</label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">تعداد کارمندان</label>
+                        <input type="range" class="form-range" min="1" max="500" step="1" id="mobileEmployeeRange">
+                        <div class="d-flex justify-content-between">
+                            <small>1 نفر</small>
+                            <small>500+ نفر</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-mdb-dismiss="modal">انصراف</button>
+                    <button type="button" class="btn btn-primary">اعمال فیلترها</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MDB -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+    <!-- Persian Font -->
+    <script src="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.js"></script>
+</body>
+</html>
