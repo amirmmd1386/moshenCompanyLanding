@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تماس با ما | شرکت شما</title>
+    <!-- MDB RTL -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.rtl.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+     :root {
+    --primary-light: #64b5f6; /* آبی روشن */
+    --primary-main: #2196f3; /* آبی اصلی */
+    --primary-dark: #1976d2; /* آبی تیره */
+    --gradient-blue: linear-gradient(135deg, var(--primary-dark), var(--primary-main), var(--primary-light));
+    --gradient-blue-reverse: linear-gradient(135deg, var(--primary-light), var(--primary-main), var(--primary-dark));
+    --text-color: #2c3e50;
+    --light-bg: #f5f7fa;
+}
+
+        
+
+
+/* هدر با گرادیان آبی */
+.contact-header {
+    background: var(--gradient-blue);
+    color: white;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 10px 30px rgba(25, 118, 210, 0.3);
+    padding: 4rem 0;
+}
+
+/* کارت‌ها با سایه و افکت */
+.contact-card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    background: white;
+    overflow: hidden;
+    border-top: 3px solid var(--primary-main);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* آیکون‌های دایره‌ای با گرادیان */
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: var(--gradient-blue);
+    box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
+    font-size: 28px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+    background: var(--gradient-blue-reverse);
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* دکمه‌ها با گرادیان */
+.btn-submit {
+    background: var(--gradient-blue);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 35px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit:hover {
+    background: var(--gradient-blue-reverse);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(25, 118, 210, 0.4);
+}
+
+/* دکمه‌های outline */
+.btn-outline-primary {
+    border: 2px solid var(--primary-main);
+    color: var(--primary-main);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background: var(--gradient-blue);
+    color: white;
+    border-color: transparent;
+}
+
+/* فرم‌ها */
+.form-control:focus {
+    border-color: var(--primary-main);
+    box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
+}
+
+/* آواتار نظرات */
+.comment-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-main);
+    box-shadow: 0 3px 10px rgba(33, 150, 243, 0.2);
+}
+
+/* خط جداکننده */
+.divider {
+    height: 3px;
+    background: var(--gradient-blue);
+    margin: 2rem 0;
+    border: none;
+    border-radius: 3px;
+}
+
+/* لیبل‌های شناور */
+.floating-label {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label,
+.floating-label textarea:focus + label,
+.floating-label textarea:not(:placeholder-shown) + label {
+    color: var(--primary-main);
+}
+
+/* آیکون‌های اجتماعی */
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: var(--gradient-blue);
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(33, 150, 243, 0.2);
+    font-size: 18px;
+}
+
+.social-icon:hover {
+    background: var(--gradient-blue-reverse);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
+}
+
+/* استایل برای تایتل‌ها */
+.text-primary {
+    color: var(--primary-main) !important;
+}
+
+/* افکت برای نقشه */
+.map-container {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 5px solid white;
+    position: relative;
+}
+
+.map-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(25, 118, 210, 0.1), transparent);
+    pointer-events: none;
+    border-radius: 10px;
+}
+.map-app-chooser {
+    text-align: center;
+}
+
+
+        
+        .map-app-btn i {
+            margin-left: 8px;
+            font-size: 20px;
+        }
+        
+        /* استایل مودال */
+        .map-modal .modal-content {
+            border-radius: 15px;
+        }
+        
+        .map-modal .modal-header {
+            border-bottom: none;
+        }
+        
+        .map-modal .modal-footer {
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="contact-header py-5 mb-5">
+        <div class="container text-center">
+            <h1 class="fw-bold mb-3">با ما در تماس باشید</h1>
+            <p class="mb-0">سوالات، پیشنهادات و انتقادات خود را با ما در میان بگذارید</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mb-5">
+        <div class="row g-4">
+            <!-- Contact Info -->
+            <div class="col-md-4">
+                <div class="card contact-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="contact-icon mx-auto">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h5 class="card-title fw-bold mb-3">آدرس ما</h5>
+                        <p class="card-text">تهران، خیابان ولیعصر، کوچه فلان، پلاک 12، طبقه 3</p>
+                        <button class="btn btn-outline-primary btn-sm mt-2" id="openMapBtn">
+                            <i class="fas fa-map me-1"></i> باز کردن در نقشه
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card contact-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="contact-icon mx-auto">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h5 class="card-title fw-bold mb-3">تلفن تماس</h5>
+                        <p class="card-text mb-1">021-12345678</p>
+                        <p class="card-text">021-87654321</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card contact-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="contact-icon mx-auto">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h5 class="card-title fw-bold mb-3">ایمیل ما</h5>
+                        <p class="card-text mb-1">info@example.com</p>
+                        <p class="card-text">support@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <!-- Contact Form -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="card contact-card">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-4">پیام بگذارید</h3>
+                        
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="text" id="name" class="form-control" />
+                                        <label class="form-label" for="name">نام کامل</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="email" id="email" class="form-control" />
+                                        <label class="form-label" for="email">آدرس ایمیل</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="form-outline">
+                                    <input type="text" id="subject" class="form-control" />
+                                    <label class="form-label" for="subject">موضوع</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="form-outline">
+                                    <textarea class="form-control" id="message" rows="4"></textarea>
+                                    <label class="form-label" for="message">متن پیام</label>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-submit text-white">ارسال پیام</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment Section -->
+            <div class="col-lg-6">
+                <div class="card contact-card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-4">ارسال نظر</h3>
+                        
+                        <form>
+                            <div class="mb-4">
+                                <div class="form-outline">
+                                    <input type="text" id="comment-name" class="form-control" />
+                                    <label class="form-label" for="comment-name">نام شما</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="form-outline">
+                                    <textarea class="form-control" id="comment" rows="3"></textarea>
+                                    <label class="form-label" for="comment">نظر شما</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="remember" />
+                                <label class="form-check-label" for="remember">مرا به خاطر بسپار</label>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-submit text-white">ثبت نظر</button>
+                            </div>
+                        </form>
+                        
+                        <hr class="my-4">
+                        
+                        <h5 class="fw-bold mb-3">نظرات کاربران</h5>
+                        
+                        <div class="d-flex mb-4">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" 
+                                 class="rounded-circle me-3" width="60" height="60" alt="User Avatar">
+                            <div>
+                                <h6 class="fw-bold mb-1">محمد رضایی</h6>
+                                <p class="text-muted small mb-1">۲ روز پیش</p>
+                                <p class="mb-0">خدمات عالی و پشتیبانی بسیار خوبی دارید. ممنون از زحماتتون</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" 
+                                 class="rounded-circle me-3" width="60" height="60" alt="User Avatar">
+                            <div>
+                                <h6 class="fw-bold mb-1">فاطمه محمدی</h6>
+                                <p class="text-muted small mb-1">۱ هفته پیش</p>
+                                <p class="mb-0">محصولات با کیفیتی ارائه می‌دید. موفق باشید</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Map -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.123456789012!2d51.12345678901234!3d35.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDA3JzI0LjQiTiA1McKwMDcnMjQuNCJF!5e0!3m2!1sen!2sir!4v1234567890123!5m2!1sen!2sir" 
+                            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- Social Media -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h4 class="fw-bold mb-4">ما را در شبکه‌های اجتماعی دنبال کنید</h4>
+                <div class="d-flex justify-content-center">
+                    <a href="#" class="social-icon me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon me-3"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-icon me-3"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade map-modal" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="mapModalLabel">
+                        <i class="fas fa-map-marked-alt me-2"></i> انتخاب سرویس نقشه
+                    </h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row text-center">
+                        <div class="col-md-6 mb-3">
+                            <a href="#" class="btn google-btn map-app-btn" id="googleMapBtn">
+                                <i class="fab fa-google"></i> Google Maps
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="#" class="btn waze-btn map-app-btn" id="wazeBtn">
+                                <i class="fab fa-waze"></i> Waze
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="#" class="btn bing-btn map-app-btn" id="bingBtn">
+                                <i class="fab fa-microsoft"></i> Bing Maps
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="#" class="btn apple-btn map-app-btn" id="appleMapBtn">
+                                <i class="fab fa-apple"></i> Apple Maps
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="#" class="btn osm-btn map-app-btn" id="osmBtn">
+                                <i class="fas fa-map"></i> OpenStreetMap
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="#" class="btn neshan-btn map-app-btn" id="neshanBtn">
+                                <i class="fas fa-map-pin"></i> نشان
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <a href="#" class="btn neshan-btn map-app-btn" id="baladBtn">
+                                <i class="fas fa-map-pin"></i> بلد
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary" data-mdb-dismiss="modal">بستن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- MDB -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+    <!-- Persian Font -->
+    <script src="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.js"></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+            // مختصات جغرافیایی محل شرکت
+            const companyLat = 35.6892;
+            const companyLng = 51.3890;
+            const companyAddress = "تهران، خیابان ولیعصر، کوچه فلان، پلاک 12، طبقه 3";
+            
+            // لینک‌های سرویس‌های نقشه
+            const mapServices = {
+                google: `https://www.google.com/maps/search/?api=1&query=${companyLat},${companyLng}`,
+                googleApp: `https://maps.google.com/?q=${companyLat},${companyLng}`,
+                waze: `https://www.waze.com/ul?ll=${companyLat},${companyLng}&navigate=yes`,
+                bing: `https://www.bing.com/maps?q=${companyLat},${companyLng}`,
+                apple: `https://maps.apple.com/?q=${companyLat},${companyLng}`,
+                osm: `https://www.openstreetmap.org/?mlat=${companyLat}&mlon=${companyLng}#map=18/${companyLat}/${companyLng}`,
+                neshan: `https://neshan.org/maps/@${companyLat},${companyLng},16.0z,0.0p/search/${encodeURIComponent(companyAddress)}`,
+                 balad: `https://balad.ir/location?latitude=${companyLat}&longitude=${companyLng}&title=${encodeURIComponent(companyAddress)}`
+            };
+            
+            // باز کردن مودال هنگام کلیک روی دکمه
+            document.getElementById('openMapBtn').addEventListener('click', function() {
+                const modal = new mdb.Modal(document.getElementById('mapModal'));
+                modal.show();
+            });
+            
+            // تنظیم لینک‌ها برای دکمه‌های نقشه
+            document.getElementById('googleMapBtn').href = mapServices.google;
+            document.getElementById('wazeBtn').href = mapServices.waze;
+            document.getElementById('bingBtn').href = mapServices.bing;
+            document.getElementById('appleMapBtn').href = mapServices.apple;
+            document.getElementById('osmBtn').href = mapServices.osm;
+            document.getElementById('neshanBtn').href = mapServices.neshan;
+            document.getElementById('baladBtn').href = mapServices.balad;
+
+            
+            // تشخیص دستگاه موبایل برای باز کردن مستقیم اپلیکیشن
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                document.getElementById('googleMapBtn').href = mapServices.googleApp;
+            }
+        });
+    </script>
+</body>
+</html>
