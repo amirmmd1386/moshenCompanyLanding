@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرصت شغلی کارگر ساده | واحد صنعتی</title>
+    <!-- MDB RTL -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.rtl.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../asset/css/base.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #f8f9fa;
+            --accent-color: #f72585;
+            --dark-color: #2b2d42;
+            --light-color: #f8f9fa;
+        }
+        
+       
+        
+        .job-card {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            background: white;
+        }
+        
+        .job-header {
+            border-bottom: 1px solid #eee;
+            padding: 20px;
+            background-color: rgba(67, 97, 238, 0.03);
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .job-body {
+            padding: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .info-icon {
+            width: 30px;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-left: 10px;
+            margin-top: 3px;
+        }
+        
+        .info-content {
+            flex: 1;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 3px;
+        }
+        
+        .info-value {
+            color: #555;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(67, 97, 238, 0.1);
+        }
+        
+        .badge-custom {
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .benefit-badge {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            margin-left: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        
+        .contact-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
+            color: white;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to left, transparent, #ddd, transparent);
+            margin: 25px 0;
+            border: none;
+        }
+    </style>
+</head>
+<body class="container-xxl">
+     <!-- Header -->
+     <nav class="navbar navbar-expand-lg bg-body-tertiary mx-1 mx-lg-0 my-3 mb-2 ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img
+                    src="https://shams-abad.com/uploads/Resources/Images/Portal/Logo/Logo.png" height="50" alt=""></a>
+            <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link active" aria-current="page" href="#">خانه</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">درباره ما</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">استخدامی</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">اخبار</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="btn btn-outline-primary ">
+                        <p class="h6">ورود</p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
+        <div class="container-fluid">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="#">خانه</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <a href="#">فروشگاه</a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </nav>
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- کارت اصلی شغل -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="fw-bold mb-1">کارگر ساده</h3>
+                        <p class="text-muted mb-3">واحد صنعتی | کد ردیف: ت</p>
+                        <div>
+                            <span class="badge-custom" style="background-color: #e3f2fd; color: #1976d2;">
+                                <i class="fas fa-clock me-1"></i> اعتبار تا: 1404-02-02
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="job-body">
+                        <!-- اطلاعات واحد صنعتی -->
+                        <h5 class="section-title">
+                            <i class="fas fa-industry me-2"></i> اطلاعات واحد صنعتی
+                        </h5>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">کارفرما</div>
+                                <div class="info-value">مدیرعامل</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">تلفن تماس</div>
+                                <div class="info-value">56909096 - 09912523992</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">آدرس شرکت</div>
+                                <div class="info-value">هشترودی - نسترن 6 شماره قطعه TJ-415/3 پ7</div>
+                            </div>
+                        </div>
+                        
+                        <div class="divider"></div>
+                        
+                        <!-- اطلاعات موقعیت شغلی -->
+                        <h5 class="section-title">
+                            <i class="fas fa-briefcase me-2"></i> اطلاعات شغل
+                        </h5>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">تعداد نیروی درخواستی</div>
+                                <div class="info-value">2 نفر</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">آدرس محل کار</div>
+                                <div class="info-value">هشترودی - نسترن 6 شماره قطعه TJ-415/3 پ7</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">جنسیت</div>
+                                <div class="info-value">آقا</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">ساعت کاری</div>
+                                <div class="info-value">8 ساعت در روز (بر اساس اداره کار)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">سابقه کار مورد نیاز</div>
+                                <div class="info-value">1 تا 3 ماه</div>
+                            </div>
+                        </div>
+                        
+                        <div class="divider"></div>
+                        
+                        <!-- مزایای شغل -->
+                        <h5 class="section-title">
+                            <i class="fas fa-gift me-2"></i> مزایای شغل
+                        </h5>
+                        
+                        <div>
+                            <span class="badge-custom benefit-badge">
+                                <i class="fas fa-shield-alt me-1"></i> بیمه
+                            </span>
+                            <span class="badge-custom benefit-badge">
+                                <i class="fas fa-utensils me-1"></i> وعده غذایی
+                            </span>
+                            <span class="badge-custom benefit-badge">
+                                <i class="fas fa-bus me-1"></i> سرویس رفت و برگشت
+                            </span>
+                            <span class="badge-custom benefit-badge">
+                                <i class="fas fa-money-bill-wave me-1"></i> حقوق و مزایا (اداره کار)
+                            </span>
+                        </div>
+                        
+                        <div class="info-item mt-3">
+                            <div class="info-icon">
+                                <i class="fas fa-route"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">مسیر سرویس</div>
+                                <div class="info-value">حسن آباد، پیشوا، شهر ری</div>
+                            </div>
+                        </div>
+                        
+                        <div class="divider"></div>
+                        
+                        <!-- سایر اطلاعات -->
+                        <h5 class="section-title">
+                            <i class="fas fa-info-circle me-2"></i> سایر اطلاعات
+                        </h5>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">شرایط احراز</div>
+                                <div class="info-value">عدم سوء پیشینه، عدم اعتیاد، پذیرش اتباع نداریم</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">سایر مزایا</div>
+                                <div class="info-value">بیمه، عیدی و سنوات، حقوق به موقع، بسته معیشتی</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <a href="tel:09912523992" class="contact-btn">
+                                <i class="fas fa-phone-alt me-2"></i> تماس برای استخدام
+                            </a>
+                            <a href="tel:09912523992" class="contact-btn mt-1">
+                                <i class="fas fa-phone-alt me-2 "></i> ارسال رزومه
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="  pt-5 mt-5 mb-2">
+        <div class="container">
+            <div class="row">
+                
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">© 1402 کلیه حقوق برای شهرک صنعتی پردیس محفوظ است</p>
+            </div>
+        </div>
+    </footer>
+    <!-- MDB -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+    <!-- Persian Font -->
+    <script src="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.js"></script>
+</body>
+</html>
