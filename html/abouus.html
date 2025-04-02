@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره ما | شرکت صنعتی نوین</title>
+    <!-- MDB RTL -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.rtl.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3f37c9;
+            --secondary-color: #f8f9fa;
+            --accent-color: #f72585;
+            --dark-color: #2b2d42;
+            --light-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Vazir', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        .about-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.3);
+        }
+        
+        .about-card {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .company-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            border: 3px solid white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-right: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 10px;
+            height: 100%;
+            width: 2px;
+            background: var(--primary-light);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 4px solid var(--primary-light);
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .team-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgba(67, 97, 238, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .divider {
+            height: 3px;
+            background: linear-gradient(to left, transparent, var(--primary-light), transparent);
+            margin: 40px 0;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="about-header py-5 mb-5">
+        <div class="container text-center">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/057/745/073/small_2x/modern-factory-concept-illustrating-industrial-production-process-vector.jpg" 
+                 alt="Company Logo" class="company-logo img-fluid mb-4">
+            <h1 class="fw-bold mb-3">شرکت صنعتی نوین</h1>
+            <p class="mb-0 lead">پیشرو در صنعت تولید و خدمات صنعتی با بیش از 15 سال تجربه</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mb-5">
+        <!-- درباره شرکت -->
+        <div class="row mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="card about-card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-4 text-primary">درباره ما</h3>
+                        <p class="mb-4">شرکت صنعتی نوین در سال 1388 با هدف ارائه محصولات و خدمات با کیفیت در حوزه صنعت تأسیس شد. ما با تکیه بر دانش فنی و تجربه کارشناسان خود، همواره در تلاش برای ارائه بهترین راهکارها به مشتریان هستیم.</p>
+                        <p>امروز با بیش از 120 پرسنل متخصص و تجهیزات مدرن، به یکی از پیشروان صنعت در منطقه تبدیل شده‌ایم. کیفیت، نوآوری و رضایت مشتری سه اصل اساسی در فعالیت‌های ماست.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card about-card h-100">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-4 text-primary">چشم‌انداز و مأموریت</h3>
+                        <p class="mb-4">ماموریت ما توسعه پایدار صنعت کشور با تولید محصولات با کیفیت و ارائه خدمات تخصصی است. ما معتقدیم با نوآوری و استفاده از فناوری‌های روز می‌توانیم به صنعتی پیشرفته و خودکفا کمک کنیم.</p>
+                        <p>چشم‌انداز شرکت صنعتی نوین تبدیل شدن به برند پیشرو در سطح منطقه تا سال 1405 است. ما برای دستیابی به این هدف، برنامه‌های توسعه بلندمدت و کوتاه‌مدت تدوین کرده‌ایم.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- تاریخچه شرکت -->
+        <div class="card about-card mb-5">
+            <div class="card-body p-4">
+                <h3 class="fw-bold mb-4 text-primary">تاریخچه شرکت</h3>
+                <div class="timeline">
+                    <div class="timeline-item ps-4">
+                        <h5 class="fw-bold">تأسیس شرکت (1388)</h5>
+                        <p class="mb-0">شروع فعالیت با 10 پرسنل در زمینه تولید قطعات صنعتی</p>
+                    </div>
+                    <div class="timeline-item ps-4">
+                        <h5 class="fw-bold">گسترش خط تولید (1392)</h5>
+                        <p class="mb-0">اضافه شدن خط تولید جدید و افزایش ظرفیت تولید</p>
+                    </div>
+                    <div class="timeline-item ps-4">
+                        <h5 class="fw-bold">اخذ گواهی ISO (1395)</h5>
+                        <p class="mb-0">کسب گواهی‌نامه‌های بین‌المللی کیفیت</p>
+                    </div>
+                    <div class="timeline-item ps-4">
+                        <h5 class="fw-bold">توسعه صادرات (1398)</h5>
+                        <p class="mb-0">شروع صادرات محصولات به کشورهای همسایه</p>
+                    </div>
+                    <div class="timeline-item ps-4">
+                        <h5 class="fw-bold">دستاوردهای اخیر (1402)</h5>
+                        <p class="mb-0">توسعه واحد تحقیق و توسعه و اختراعات ثبت شده</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- آمار و ارقام -->
+        <h3 class="fw-bold mb-4 text-primary text-center">آمار و ارقام</h3>
+        <div class="row mb-5">
+            <div class="col-md-3 mb-4">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <h5 class="fw-bold">سال تجربه</h5>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-item">
+                    <div class="stat-number">120+</div>
+                    <h5 class="fw-bold">پرسنل متخصص</h5>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <h5 class="fw-bold">مشتری دائمی</h5>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-item">
+                    <div class="stat-number">12+</div>
+                    <h5 class="fw-bold">کشورهای مقصد</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- تیم مدیریت -->
+        <h3 class="fw-bold mb-4 text-primary text-center">تیم مدیریت</h3>
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="مدیر عامل" class="team-img">
+                    <h5 class="fw-bold mb-1">علیرضا محمدی</h5>
+                    <p class="text-muted">مدیر عامل</p>
+                    <p class="small">مؤسس و مدیر عامل شرکت با 20 سال سابقه در صنعت</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="مدیر فنی" class="team-img">
+                    <h5 class="fw-bold mb-1">فاطمه حسینی</h5>
+                    <p class="text-muted">مدیر فنی</p>
+                    <p class="small">مسئول کنترل کیفیت و توسعه محصولات جدید</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="مدیر مالی" class="team-img">
+                    <h5 class="fw-bold mb-1">محمد جوادی</h5>
+                    <p class="text-muted">مدیر مالی</p>
+                    <p class="small">مسئول امور مالی و سرمایه‌گذاری‌های شرکت</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- گواهی‌نامه‌ها -->
+        <div class="card about-card mb-5">
+            <div class="card-body p-4">
+                <h3 class="fw-bold mb-4 text-primary">گواهی‌نامه‌ها و افتخارات</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h5 class="fw-bold text-center">ISO 9001</h5>
+                        <p class="text-center text-muted">گواهی سیستم مدیریت کیفیت</p>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h5 class="fw-bold text-center">ISO 14001</h5>
+                        <p class="text-center text-muted">گواهی سیستم مدیریت محیط زیست</p>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h5 class="fw-bold text-center">شرکت برتر</h5>
+                        <p class="text-center text-muted">کسب عنوان شرکت برتر صنعتی در سال 1401</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MDB -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+    <!-- Persian Font -->
+    <script src="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.js"></script>
+</body>
+</html>
