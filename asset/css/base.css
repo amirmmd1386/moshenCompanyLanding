@@ -41,6 +41,7 @@
     color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
+    margin: 5px;
 }
 
 .nav-link:hover {
@@ -50,4 +51,7 @@
 .nav-link.active {
     color: var(--primary-color);
     font-weight: bold;
+}
+.navbar .nav-link{
+    font-size: 20px !important;
 }
